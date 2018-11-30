@@ -1,26 +1,32 @@
 {
-  "name": "my-new-project",
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "real-world-native-app",
+  "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "postinstall": "node scripts/link-workspaces.js",
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios"
   },
   "dependencies": {
-    "@expo/samples": "2.1.1",
-    "expo": "^31.0.2",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-navigation": "^2.18.2"
+    "expo": "28.0.0",
+    "history": "4.7.2",
+    "path-to-regexp": "2.2.1",
+    "react-native-tab-view": "1.2.0",
+    "react-navigation": "1.5.8",
+    "react-redux": "5.0.6",
+    "react-router-redux": "5.0.0-alpha.9",
+    "react-native": "0.55.4",
+    "react-router": "4.2.0",
+    "react-router-native": "4.2.0",
+    "react-router-navigation": "2.0.0-alpha.7",
+    "redux": "3.7.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "jest-expo": "^31.0.0"
+    "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
+    "metro-bundler-config-yarn-workspaces": "^1.0.2",
+    "react-native-scripts": "1.14.0"
   }
 }
