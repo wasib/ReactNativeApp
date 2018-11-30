@@ -1,16 +1,18 @@
 {
   "expo": {
-    "name": "my-new-project",
-    "description": "This project is really great.",
-    "slug": "my-new-project",
+    "name": "DemoReactNativeApp",
+    "slug": "DemoReactNativeApp",
     "privacy": "public",
     "sdkVersion": "31.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
