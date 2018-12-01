@@ -14,12 +14,19 @@ import {
   Tab,
   BottomNavigation
 } from "react-router-navigation";
-import { NativeRouter, Route, Link } from "react-router-native";
+import {
+  NativeRouter,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from "react-router-native";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
-export default class Home extends React.Component {
+
+export default class AppNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -27,86 +34,73 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <NativeRouter>
-        <View style={styles.container}>
-          {/* <Text>Hello</Text> */}
-          {/* <Navigation
-          hideNavBar
-          navBarStyle={{ backgroundColor: "purple" }}
-          titleStyle={{ color: "white" }}
-        >
-          <Card exact path="/" component={HomeScreen} />
-          <Card exact path="/links" component={LinksScreen} />
-          <Card exact path="/settings" component={SettingsScreen} />
-        </Navigation> */}
-
-          {/* <Tabs
-            scrollEnabled
-            labelStyle={{ color: "white" }}
-            tabBarStyle={{ backgroundColor: "purple" }}
-            tabBarIndicatorStyle={{ backgroundColor: "white" }}
-          >
-            <Tab exact path="/" label="Home" component={HomeScreen} />
-            <Tab exact path="/links" label="Links" component={LinksScreen} />
-            <Tab
-              exact
-              path="/settings"
-              label="Settings"
-              component={SettingsScreen}
-            />
-          </Tabs> */}
-
-          <BottomNavigation lazy={true}>
-            <Tab
-              exact
-              path="/"
-              label="Home"
-              renderTabIcon={({ focused }) => (
-                <TabBarIcon
-                  focused={focused}
-                  name={
-                    Platform.OS === "ios"
-                      ? `ios-information-circle${focused ? "" : "-outline"}`
-                      : "md-information-circle"
-                  }
+      <View style={styles.container}>
+        <Switch location={this.props.location}>
+          <Route
+            exact
+            path="/app"
+            render={({ match: { url } }) => <Redirect to={`${url}/home`} />}
+          />
+          <Route
+            path="/app"
+            render={({ match: { url } }) => (
+              <BottomNavigation lazy={true}>
+                <Tab
+                  exact
+                  path={`${url}/home`}
+                  label="Home"
+                  renderTabIcon={({ focused }) => (
+                    <TabBarIcon
+                      focused={focused}
+                      name={
+                        Platform.OS === "ios"
+                          ? `ios-information-circle${focused ? "" : "-outline"}`
+                          : "md-information-circle"
+                      }
+                    />
+                  )}
+                  component={HomeScreen}
                 />
-              )}
-              component={HomeScreen}
-            />
-            <Tab
-              exact path="/links"
-              label="Links"
-              renderTabIcon={({ focused }) => (
-                <TabBarIcon
-                  focused={focused}
-                  name={Platform.OS === "ios" ? "ios-link" : "md-link"}
+                <Tab
+                  exact
+                  path={`${url}/links`}
+                  label="Links"
+                  renderTabIcon={({ focused }) => (
+                    <TabBarIcon
+                      focused={focused}
+                      name={Platform.OS === "ios" ? "ios-link" : "md-link"}
+                    />
+                  )}
+                  component={LinksScreen}
                 />
-              )}
-              component={LinksScreen}
-            />
-            <Tab
-              exact
-              path="/settings"
-              label="Settings"
-              renderTabIcon={({ focused }) => (
-                <TabBarIcon
-                  focused={focused}
-                  name={Platform.OS === "ios" ? "ios-options" : "md-options"}
+                <Tab
+                  exact
+                  path={`${url}/settings`}
+                  label="Settings"
+                  renderTabIcon={({ focused }) => (
+                    <TabBarIcon
+                      focused={focused}
+                      name={
+                        Platform.OS === "ios" ? "ios-options" : "md-options"
+                      }
+                    />
+                  )}
+                  component={SettingsScreen}
                 />
-              )}
-              component={SettingsScreen}
-            />
-          </BottomNavigation>
-        </View>
-      </NativeRouter>
+              </BottomNavigation>
+            )}
+          />
+          
+        </Switch>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
-    padding: 2,
+    marginTop: 0,
+    padding: 0,
     flex: 1
   },
   nav: {

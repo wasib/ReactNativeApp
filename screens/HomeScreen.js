@@ -23,7 +23,8 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-          <Link to="/links"><Text>Link</Text></Link>
+          <Text>{this.props.location.pathname}</Text>
+          <Link to="/demo"><Text>DemoScreen</Text></Link>
             <Image
               source={
                 __DEV__
