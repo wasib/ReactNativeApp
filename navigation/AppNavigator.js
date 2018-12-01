@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, AppRegistry, Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  AppRegistry,
+  Platform
+} from "react-native";
 import {
   Navigation,
   Card,
@@ -51,7 +58,8 @@ export default class Home extends React.Component {
 
           <BottomNavigation lazy={true}>
             <Tab
-              exact path="/"
+              exact
+              path="/"
               label="Home"
               renderTabIcon={({ focused }) => (
                 <TabBarIcon
@@ -77,7 +85,8 @@ export default class Home extends React.Component {
               component={LinksScreen}
             />
             <Tab
-              exact path="/settings"
+              exact
+              path="/settings"
               label="Settings"
               renderTabIcon={({ focused }) => (
                 <TabBarIcon
