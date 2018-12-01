@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {Link } from 'react-router-native'
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
@@ -22,6 +23,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
+          <Link to="/links"><Text>Link</Text></Link>
             <Image
               source={
                 __DEV__
