@@ -25,6 +25,7 @@ import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
+import TabNavigator from "./TabNavigator";
 
 export default class AppNavigator extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export default class AppNavigator extends React.Component {
           <Route
             path="/app"
             render={({ match: { url } }) => (
-              <BottomNavigation lazy={true}>
+              <BottomNavigation lazy={false}>
                 <Tab
                   exact
                   path={`${url}/home`}
@@ -74,6 +75,17 @@ export default class AppNavigator extends React.Component {
                   component={LinksScreen}
                 />
                 <Tab
+                  path={`${url}/tabs`}
+                  label="Tabs"
+                  renderTabIcon={({ focused }) => (
+                    <TabBarIcon
+                      focused={focused}
+                      name={Platform.OS === "ios" ? "ios-apps" : "md-apps"}
+                    />
+                  )}
+                  component={TabNavigator}
+                />
+                <Tab
                   exact
                   path={`${url}/settings`}
                   label="Settings"
@@ -90,7 +102,6 @@ export default class AppNavigator extends React.Component {
               </BottomNavigation>
             )}
           />
-          
         </Switch>
       </View>
     );
